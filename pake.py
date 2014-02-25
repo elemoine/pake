@@ -212,7 +212,7 @@ class Target(object):
         self.info(' '.join(args))
         try:
             output = check_output(args, **kwargs)
-            with open(self.name, 'w') as f:
+            with open(self.name, 'wb') as f:
                 f.write(output)
         except subprocess.CalledProcessError as e:
             self.clean(recurse=False)
@@ -261,7 +261,7 @@ class Target(object):
         if os.path.exists(self.name):
             os.utime(self.name, None)
         else:
-            with open(self.name, 'w'):
+            with open(self.name, 'wb'):
                 pass
 
 
